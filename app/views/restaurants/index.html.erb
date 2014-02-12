@@ -1,2 +1,47 @@
-<h1>Restaurants#index</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<h3>Restaurants</h3>
+
+<div class="col3"> 
+	<h4>Cuisine Types</h4>
+	<p> 
+		<%= link_to "Bar", sort_restaurants_path("Bar") %><br>
+		<%= link_to "Japanese", sort_restaurants_path("Japanese") %><br>
+		<%= link_to "Diner", sort_restaurants_path("Diner") %><br>
+		<%= link_to "Bistro", sort_restaurants_path("Bistro") %><br>
+		<%= link_to "Greek", sort_restaurants_path("Greek") %><br>
+		<%= link_to "Fusion", sort_restaurants_path("Fusion") %><br>
+	</p><br>
+</div>
+
+<div class="col3"> 
+	<h4>Price</h4>
+		<p> 
+		<%= link_to "Bar", sort_restaurants_path("Bar") %><br>
+		<%= link_to "Japanese", sort_restaurants_path("Japanese") %><br>
+		<%= link_to "Diner", sort_restaurants_path("Diner") %><br>
+		<%= link_to "Bistro", sort_restaurants_path("Bistro") %><br>
+		<%= link_to "Greek", sort_restaurants_path("Greek") %><br>
+		<%= link_to "Fusion", sort_restaurants_path("Fusion") %><br>
+	</p><br>
+</div>
+<div class="col3"> 
+	<h4>Neighbourhood</h4>
+		<p> 
+		<%= link_to "Bar", sort_restaurants_path("Bar") %><br>
+		<%= link_to "Japanese", sort_restaurants_path("Japanese") %><br>
+		<%= link_to "Diner", sort_restaurants_path("Diner") %><br>
+		<%= link_to "Bistro", sort_restaurants_path("Bistro") %><br>
+		<%= link_to "Greek", sort_restaurants_path("Greek") %><br>
+		<%= link_to "Fusion", sort_restaurants_path("Fusion") %><br>
+	</p><br>
+</div>
+
+<% @restaurants.each do |restaurant| %>
+<h4><%= link_to restaurant.name, restaurant_path(restaurant)%> </h4>
+<ul>
+  <li><%= restaurant.summary %></li>
+  <li><%= restaurant.address %></li>
+  <li><%= restaurant.neighbourhood %></li>
+  <li><%= restaurant.price %></li>
+  <li><%= restaurant.cuisine %></li>
+</ul>
+<% end %>

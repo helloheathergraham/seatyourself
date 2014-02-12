@@ -1,10 +1,12 @@
 class RestaurantsController < ApplicationController
+
   def index
     @restaurants = Restaurant.all
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def new
@@ -13,6 +15,11 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:id])
+  end
+
+  def sort
+    @restaurants = Restaurant.where(cuisine: params[:cuisine])
+
   end
 
   def create
@@ -45,6 +52,4 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :neighbourhood, :price, :summary, :cuisine)
   end
-end
-
 end

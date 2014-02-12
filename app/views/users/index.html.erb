@@ -1,0 +1,16 @@
+
+  <h3>Reservations for <%= @user.name %></h3>
+
+  <% @user.reservations.each do |r| %>
+  <div class="reservation">
+    <p>
+      <b><%= r.restaurant.name %></b><br>
+      <b>Time:</b> <%= r.time.strftime("%H:%M %p")%><br>
+      <b>Date:</b> <%= r.date.strftime("%B %d")%><br>
+      <b>Number of people:</b> <%= r.party_size %><br>
+      </p>
+      <p>
+      <%= link_to "Cancel Reservation", r, :confirm => "Are you sure you want to cancel?", :method => :delete %>
+    </p>
+  </div>
+  <% end %>

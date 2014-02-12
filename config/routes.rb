@@ -1,11 +1,8 @@
 Seatyourself::Application.routes.draw do
-  get "restaurants/index"
-  get "restaurants/create"
-  get "restaurants/new"
-  get "restaurants/show"
-  get "restaurants/edit"
-  get "restaurants/update"
-  get "restaurants/delete"
+  get "reservations/show"
+  get "reservations/create"
+  get "reservations/destroy"
+  get "restaurants/sort/:cuisine" => "restaurants#sort", as: :sort_restaurants
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -19,8 +16,12 @@ Seatyourself::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
+  resources :restaurants do 
+    resources :reservations, :only => [:show, :create]
+  end
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :users, :only => [:new, :create, :index]
+  resources :reservations, :only => [:destroy]
   # Example resource route with options:
   #   resources :products do
   #     member do
