@@ -19,7 +19,6 @@ class RestaurantsController < ApplicationController
 
   def sort
     @restaurants = Restaurant.where(cuisine: params[:cuisine])
-
   end
 
   def create
